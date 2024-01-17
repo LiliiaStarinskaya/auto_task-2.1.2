@@ -7,5 +7,8 @@ let studentName = "Luntik";
 let studentSurname = "Dzishkariani";
 
 console.log(
-  `The average score of ${studentName} ${studentSurname} for the modules is ${average}.`
+  `The average score of ${studentName.slice(
+    0,
+    1
+  )}. ${studentSurname} for the modules is ${average}.`
 );
