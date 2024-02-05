@@ -25,4 +25,10 @@ describe("Suite for sum tests", () => {
     sum > 50 ? (bonus = 60) : (bonus = sum);
     expect(bonus).toEqual(60);
   });
+  test("boundary", () => {
+    let sum = 49;
+    let bonus;
+    sum > 50 ? (bonus = 60) : (bonus = sum);
+    expect(bonus).toEqual(49);
+  });
 });
