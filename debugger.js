@@ -7,15 +7,4 @@ const calculateBonus = (a, b) => {
   return bonus;
 };
 
-// function assert(expectedResult, actualResult) {
-//   if (expectedResult === actualResult) {
-//     console.log("Passed");
-//   } else {
-//     console.log(
-//       `Expected result ${expectedResult} not equals the actual result ${actualResult}`
-//     );
-//   }
-// }
-// assert(0, calculateBonus(0, 9));
-
 module.exports = calculateBonus;
