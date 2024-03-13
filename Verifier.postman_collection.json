@@ -1,0 +1,631 @@
+{
+	"info": {
+		"_postman_id": "318d1a98-46aa-408a-be8b-791bebb3c5f9",
+		"name": "Verifier",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18045710"
+	},
+	"item": [
+		{
+			"name": "Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}",
+					"host": [
+						"{{serverUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"admin_automation\",\n  \"password\": \"admin_automation\",\n  \"rememberMe\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/api/authenticate",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"authenticate"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login with incorrect credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", () => {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"sertghjiolkjh\",\n  \"password\": \"xserfvbhuio\",\n  \"rememberMe\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/api/authenticate",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"authenticate"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEwNzA3MzI2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcwODExNTMyNn0.tRClupCXHY_mKz287fihPwy344T9dCzf1jO2S18FPVUUbYiop-BDYfPeEWFjg-AFY6lcQrA48d8CkvWRvB6kRA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"user_teacher\",\n  \"password\": \"user\",\n  \"rememberMe\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/api/authenticate",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"authenticate"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEwNzA3MzI2LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcwODExNTMyNn0.tRClupCXHY_mKz287fihPwy344T9dCzf1jO2S18FPVUUbYiop-BDYfPeEWFjg-AFY6lcQrA48d8CkvWRvB6kRA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"user_student\",\n  \"password\": \"user\",\n  \"rememberMe\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/api/authenticate",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"authenticate"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", ()=>  {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"login\": \"cover4\",\n  \"firstName\": \"cover4\",\n  \"lastName\": \"string\",\n  \"email\": \"cover4@mail.com\",\n  \"imageUrl\": \"string\",\n  \"activated\": true,\n  \"langKey\": \"string\",\n  \"createdBy\": \"string\",\n  \"createdDate\": \"2024-02-16T20:21:22.889Z\",\n  \"lastModifiedBy\": \"string\",\n  \"lastModifiedDate\": \"2024-02-16T20:21:22.889Z\",\n  \"authorities\": [\n    \"string\"\n  ],\n  \"password\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/api/register",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"register"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "20",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"",
+							"const existingTaskIds = [57351, 57352, 57353, 57354, 57355, 57356, 54653, 57357, 56212];",
+							"",
+							"const randomIndex = Math.floor(Math.random() * existingTaskIds.length);",
+							"",
+							"const randomExistingId = existingTaskIds[randomIndex];",
+							"",
+							"pm.environment.set(\"randomExistingId\", randomExistingId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEyODc2NTM3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMDI4NDUzN30.AjsiDekibRq2sPWGZKM0eMoQgGuzQ1tF04gMduL9j0Bo5WO77MEXtVGVSgOwmxfNTsI6i5ZokTz6Hh8dy8MK0Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/api/tasks/{{randomExistingId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"{{randomExistingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEyODc2NTM3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMDI4NDUzN30.AjsiDekibRq2sPWGZKM0eMoQgGuzQ1tF04gMduL9j0Bo5WO77MEXtVGVSgOwmxfNTsI6i5ZokTz6Hh8dy8MK0Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{serverUrl}}/api/tasks/54653",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"54653"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const existingTaskIds = [{",
+							"    \"id\": 57351,",
+							"    \"text\": \"Stokes - Berge\",",
+							"    \"answer\": \"test\",",
+							"    \"title\": \"test\"",
+							"  },",
+							"  {",
+							"    \"id\": 57352,",
+							"    \"text\": \"Purdy - Crist\",",
+							"    \"answer\": \"test\",",
+							"    \"title\": \"\"",
+							"  },",
+							"  {",
+							"    \"id\": 54653,",
+							"    \"text\": \"🦋🦋🦋🦋🦋🦋 cfty\",",
+							"    \"answer\": \"gty 🦑🦑🦑🦑🦑🦑\",",
+							"    \"title\": \"☘️☘️☘️☘️🍄🍄🍄🍄☘️☘️☘️☘️fgtyu\"",
+							"  },",
+							"  {",
+							"    \"id\": 57357,",
+							"    \"text\": \"Veniam tempore sed earum at molestias voluptatem iusto.\",",
+							"    \"answer\": \"Libero voluptatum sit repudiandae.\",",
+							"    \"title\": \"Inventore temporibus repellendus porro officia.\"",
+							"  },",
+							"  {",
+							"    \"id\": 56212,",
+							"    \"text\": \"\",",
+							"    \"answer\": \"quia minima in\",",
+							"    \"title\": \"reprehenderit placeat voluptatem\"",
+							"  },",
+							"];",
+							"",
+							"if (existingTaskIds.length > 0) {",
+							"",
+							"  const randomIndex = Math.floor(Math.random() * existingTaskIds.length);",
+							"",
+							"  const randomExistingTask = existingTaskIds[randomIndex];",
+							"",
+							"  const randomId = randomExistingTask.id;",
+							"",
+							"  const randomText = Math.random().toString(36).substring(2, 15);",
+							"  const randomAnswer = Math.random().toString(36).substring(2, 15);",
+							"  const randomTitle = Math.random().toString(36).substring(2, 15);",
+							"",
+							" ",
+							"  pm.environment.set(\"randomId\", randomId);",
+							"  pm.environment.set(\"randomText\", randomText);",
+							"  pm.environment.set(\"randomAnswer\", randomAnswer);",
+							"  pm.environment.set(\"randomTitle\", randomTitle);",
+							"} ",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEyODc2NTM3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMDI4NDUzN30.AjsiDekibRq2sPWGZKM0eMoQgGuzQ1tF04gMduL9j0Bo5WO77MEXtVGVSgOwmxfNTsI6i5ZokTz6Hh8dy8MK0Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": {{randomId}},\n  \"text\": \"{{randomText}}\",\n  \"answer\": \"{{randomAnswer}}\",\n  \"title\": \"{{randomTitle}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/api/tasks/{{randomId}}",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"{{randomId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a task",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbl9hdXRvbWF0aW9uIiwiZXhwIjoxNzEyODc2NTM3LCJhdXRoIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxMDI4NDUzN30.AjsiDekibRq2sPWGZKM0eMoQgGuzQ1tF04gMduL9j0Bo5WO77MEXtVGVSgOwmxfNTsI6i5ZokTz6Hh8dy8MK0Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"new text\",\n  \"answer\": \"new answer\",\n  \"title\": \"new title\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverUrl}}/api/tasks",
+					"host": [
+						"{{serverUrl}}"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "serverUrl",
+			"value": "https://sqlverifier-live-6e21ca0ed768.herokuapp.com"
+		}
+	]
+}
